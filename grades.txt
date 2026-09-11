@@ -1,0 +1,5 @@
+# initial sample data
+101,Rahul Sharma,85.5
+102,Priya Patel,92.0
+103,Amit Verma,64.0
+104,Sneha Rao,78.5
