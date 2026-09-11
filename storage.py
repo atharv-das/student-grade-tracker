@@ -1,23 +1,17 @@
 import json
 import os
 
-FILE_NAME = "expenses.json"
+DATA_FILE = "expenses.json"
 
-
-def load_expenses():
-    # If the file hasn't been created yet, return an empty list
-    if not os.path.exists(FILE_NAME):
+def load_data():
+    if not os.path.exists(DATA_FILE):
         return []
-
     try:
-        with open(FILE_NAME, "r") as f:
-            data = json.load(f)
-            return data
-    except (json.JSONDecodeError, FileNotFoundError):
-        # In case the file is empty or corrupted, start fresh
+        with open(DATA_FILE, "r") as f:
+            return json.load(f)
+    except (json.JSONDecodeError, IOError):
         return []
 
-
-def save_expenses(expenses):
-    with open(FILE_NAME, "w") as f:
-        json.dump(expenses, f, indent=4)
+def save_data(data):
+    with open(DATA_FILE, "w") as f:
+        json.dump(data, f, indent=4)
