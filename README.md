@@ -1,22 +1,24 @@
-# student-grade-tracker
-A simple CLI tool in Python to record student marks and attendance, calculate grades, and view class statistics using local file storage.
-# Student Grade & Attendance Tracker
+# Student Grade Tracker
 
-A command-line interface (CLI) program developed in Python to manage student scores, attendance percentages, and compute basic academic statistics. Data persists across sessions via file I/O operations.
+A simple command-line interface (CLI) application built using Python to record, store, and manage student grades. The program calculates letter grades based on scores and provides basic class performance statistics.
 
-## Features
-- Add student records (Roll Number, Name, Marks, Attendance).
-- Persistent storage using a local plain-text file (`students.txt`).
-- Automated grade calculation (A through F scale).
-- Search individual student records by Roll Number.
-- Display class analytics (class average, overall attendance, and top performer).
+## Project Overview
+This project was created as part of the Python Essentials coursework. It stores student data locally in a text file using standard comma-separated values (CSV style) without external dependencies.
+
+## Key Features
+- **Add Record**: Store roll number, student name, and marks.
+- **Persistent Storage**: Reads from and writes to `grades.txt`.
+- **Grade Assignment**: Converts numeric scores into letter grades (A, B, C, D, F).
+- **Search**: Fast lookup using roll numbers via Python dictionaries.
+- **Analytics**: Calculates total enrolled count, class average, high score, and low score.
+- **Input Validation**: Rejects invalid numeric values and negative scores.
 
 ## Requirements
-- Python 3.x (Works with Python 3.7 or newer)
-- No external dependencies required (uses only standard library modules).
+- Python 3.x installed.
+- No third-party packages required (`pip install` is not needed).
 
-## Setup & Running the Project
+## How to Run
 
-1. Clone the repository:
+1. Clone this repository:
    ```bash
    git clone [https://github.com/atharvdas012/student-grade-tracker.git](https://github.com/atharvdas012/student-grade-tracker.git)
