@@ -22,7 +22,7 @@ This project was created as part of the Python Essentials coursework. It stores 
 1. Clone this repository:
    
    step 1:git clone https://github.com/atharv-das/student-grade-tracker.git
-   step 2:cd student-grade-tracker
-   step 3:python main.py
+       step 2:cd student-grade-tracker
+            step 3:python main.py
    
    
