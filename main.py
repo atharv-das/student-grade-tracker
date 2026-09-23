@@ -26,10 +26,16 @@ def load_data():
                 line = line.strip()
                 if line:
                     parts = line.split(",")
-                    roll = parts[0]
-                    name = parts[1]
-                    marks = float(parts[2])
-                    records[roll] = {"name": name, "marks": marks}
+                    # Ensure the line has roll number, name, and marks
+                    if len(parts) >= 3:
+                        roll = parts[0].strip()
+                        name = parts[1].strip()
+                        try:
+                            marks = float(parts[2].strip())
+                            records[roll] = {"name": name, "marks": marks}
+                        except ValueError:
+                            # Skip lines where marks cannot be converted to a float
+                            continue
     except FileNotFoundError:
         # If the file doesn't exist yet, return an empty dictionary
         pass
@@ -93,7 +99,7 @@ def search_student(records):
     if roll in records:
         info = records[roll]
         grade = calculate_letter_grade(info["marks"])
-        print(f"Found Student Details:")
+        print("Found Student Details:")
         print(f"Roll Number : {roll}")
         print(f"Name        : {info['name']}")
         print(f"Score       : {info['marks']}")
@@ -125,7 +131,7 @@ def main():
 
     while True:
         print("\n==============================")
-        print("    STUDENT GRADE TRACKER     ")
+        print("    STUDENT GRADE TRACKER      ")
         print("==============================")
         print("1. Add Student Record")
         print("2. View All Records")
