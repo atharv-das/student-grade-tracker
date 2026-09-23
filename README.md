@@ -20,5 +20,9 @@ This project was created as part of the Python Essentials coursework. It stores 
 ## How to Run
 
 1. Clone this repository:
-   ```bash
-   git clone [https://github.com/atharvdas012/student-grade-tracker.git](https://github.com/atharvdas012/student-grade-tracker.git)
+   
+   step 1:git clone https://github.com/atharv-das/student-grade-tracker.git
+   step 2:cd student-grade-tracker
+   step 3:python main.py
+   
+   
