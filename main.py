@@ -21,29 +21,34 @@ def calculate_letter_grade(score):
 def load_data():
     records = {}
     try:
-        with open(FILENAME, "r") as f:
+        with open(FILENAME, "r", encoding="utf-8") as f:
             for line in f:
                 line = line.strip()
-                if line:
-                    parts = line.split(",")
-                    # Ensure the line has roll number, name, and marks
-                    if len(parts) >= 3:
-                        roll = parts[0].strip()
-                        name = parts[1].strip()
-                        try:
-                            marks = float(parts[2].strip())
-                            records[roll] = {"name": name, "marks": marks}
-                        except ValueError:
-                            # Skip lines where marks cannot be converted to a float
-                            continue
+                # Skip empty lines and comment lines (starting with #)
+                if not line or line.startswith("#"):
+                    continue
+
+                parts = line.split(",")
+
+                # Ensure line contains roll, name, and marks
+                if len(parts) >= 3:
+                    roll = parts[0].strip()
+                    name = parts[1].strip()
+                    try:
+                        marks = float(parts[2].strip())
+                        records[roll] = {"name": name, "marks": marks}
+                    except ValueError:
+                        # Skip if marks aren't a valid numeric value
+                        continue
     except FileNotFoundError:
-        # If the file doesn't exist yet, return an empty dictionary
+        # File will be created automatically on first save
         pass
+
     return records
 
 
 def save_data(records):
-    with open(FILENAME, "w") as f:
+    with open(FILENAME, "w", encoding="utf-8") as f:
         for roll, info in records.items():
             f.write(f"{roll},{info['name']},{info['marks']}\n")
 
@@ -51,6 +56,10 @@ def save_data(records):
 def add_student(records):
     print("\n--- Add New Student ---")
     roll = input("Enter Roll Number: ").strip()
+
+    if not roll:
+        print("Roll number cannot be empty.")
+        return
 
     if roll in records:
         print("A student with this roll number already exists!")
@@ -99,7 +108,7 @@ def search_student(records):
     if roll in records:
         info = records[roll]
         grade = calculate_letter_grade(info["marks"])
-        print("Found Student Details:")
+        print("\nFound Student Details:")
         print(f"Roll Number : {roll}")
         print(f"Name        : {info['name']}")
         print(f"Score       : {info['marks']}")
